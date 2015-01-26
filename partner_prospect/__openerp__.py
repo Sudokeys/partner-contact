@@ -19,9 +19,9 @@ If you have a question you can contact one of the following contributors:
 
 - Nicolas JEUDY <nicolas@sudokeys.com>
 """,
-    "version": "1.0",
+    "version": "1.1",
     "depends": [
-        'base', 'crm',
+        'base', 'crm', 'sales_team',
     ],
     "author": "Sudokeys",
     "category": "CRM",
