@@ -34,3 +34,17 @@ class ResPartner(models.Model):
         self.prospect = not self.customer
 
     prospect = fields.Boolean('Prospect')
+
+    @api.multi
+    def write(self, values):
+        res = super(ResPartner, self).write(values)
+
+        if values.get('prospect', 'none') != 'none' or values.get('customer', 'none') != 'none':
+            for contact in self.child_ids:
+                vals = {
+                    'prospect': self.prospect,
+                    'customer': self.customer,
+                    'supplier': self.supplier,
+                }
+                contact.write(vals)
+        return res
